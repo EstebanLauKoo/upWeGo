@@ -26,6 +26,8 @@ Route::get('/', function (Request $request) {
         return view('welcome');
 });
 
+Route::resource('/adventure', 'AdventureController');
+
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');

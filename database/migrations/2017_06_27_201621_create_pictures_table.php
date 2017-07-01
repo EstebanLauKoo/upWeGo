@@ -15,7 +15,11 @@ class CreatePicturesTable extends Migration
     {
         Schema::create('pictures', function (Blueprint $table) {
             $table->increments('id');
+            $table->a('title');
             $table->timestamps();
+            $table->enum('status', ['past','present','future']);
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

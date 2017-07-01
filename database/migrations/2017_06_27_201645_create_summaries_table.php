@@ -15,7 +15,10 @@ class CreateSummariesTable extends Migration
     {
         Schema::create('summaries', function (Blueprint $table) {
             $table->increments('id');
+            $table->longText('summary');
             $table->timestamps();
+            $table->integer('adventure_id')->unsigned();
+            $table->foreign('adventure_id')->references('id')->on('adventures');
         });
     }
 

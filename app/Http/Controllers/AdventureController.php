@@ -24,7 +24,7 @@ class AdventureController extends Controller
      */
     public function create()
     {
-        //
+        return view('adventure.create');
     }
 
     /**
