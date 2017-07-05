@@ -12,10 +12,19 @@ class AdventureController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index(Request $request) {
+
+        if (!is_null($request->user())) {
+            $user = $request->user();
+            $adventures = $user->adventures()
+                ->get();
+            return view('dashboard', compact('user', 'adventures'));
+        }
+        else
+            return view('welcome');
+
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -35,7 +44,18 @@ class AdventureController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'status' => 'required'
+        ]);
+
+        $adventure = new Adventure;
+        $adventure -> title = $request->input('title');
+        $adventure -> status = $request->input('status');
+        $adventure -> user_id = $request->user()->id;
+        $adventure -> save();
+
+        return redirect('/');
     }
 
     /**

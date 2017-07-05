@@ -49,6 +49,9 @@
     </div>
 </div>
 
+<h1>{{ $user }}</h1>
+<h1>{{ $adventures }}</h1>
+
 <form id="logout-form" action="{{ route('logout') }}" method="POST">{{ csrf_field() }}
     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
 </form>

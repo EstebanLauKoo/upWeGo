@@ -12,21 +12,8 @@
 */
 use Illuminate\Http\Request;
 
-Route::get('/', function (Request $request) {
-    // checks for log in if yes return view 'dashboard'
-    //else return view "home"
-    if (!is_null($request->user())) {
-        $user = $request->user();
-        $adventures = $user->adventures()
-            //->whereDate('created_at', '=', Carbon::today()->toDateString())
-            ->get();
-        return view('dashboard', compact('user', 'adventures'));
-            }
-    else
-        return view('welcome');
-});
 
-Route::resource('/adventure', 'AdventureController');
+Route::resource('/', 'AdventureController');
 
 Auth::routes();
 
