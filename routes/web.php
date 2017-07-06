@@ -15,6 +15,8 @@ use Illuminate\Http\Request;
 
 Route::resource('/', 'AdventureController');
 
+Route::get('/{id}', 'AdventureController@show');
+
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');

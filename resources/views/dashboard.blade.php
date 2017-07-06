@@ -14,43 +14,55 @@
 
 <div class="container">
     <div class="row">
+
         <div class="list-group col-sm-4">
-            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+
+            @foreach( $adventures as $adventure)
+                @if ( $adventure -> status === 'past')
+            <a href="/{{$adventure -> id}}" class="list-group-item list-group-item-action flex-column align-items-start active">
                 <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">List group item heading</h5>
-                    <small>3 days ago</small>
+                    <h5 class="mb-1"> {{$adventure -> title}} </h5>
+                    <small> created at: {{ $adventure -> created_at  }}</small>
                 </div>
-                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                <small>Donec id elit non mi porta.</small>
             </a>
+                @endif
+                @endforeach
+
         </div>
+
         <div class="list-group col-sm-4">
-            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">List group item heading</h5>
-                    <small>3 days ago</small>
-                </div>
-                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius
-                    blandit.</p>
-                <small>Donec id elit non mi porta.</small>
-            </a>
+
+            @foreach( $adventures as $adventure)
+                @if ( $adventure -> status === 'present')
+                    <a href="/{{$adventure -> id}}" class="list-group-item list-group-item-action flex-column align-items-start active">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1"> {{$adventure -> title}} </h5>
+                            <small> created at: {{ $adventure -> created_at  }}</small>
+                        </div>
+                    </a>
+                @endif
+            @endforeach
+
         </div>
+
         <div class="list-group col-sm-4">
-            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">List group item heading</h5>
-                    <small>3 days ago</small>
-                </div>
-                <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius
-                    blandit.</p>
-                <small>Donec id elit non mi porta.</small>
-            </a>
+
+            @foreach( $adventures as $adventure)
+                @if ( $adventure -> status === 'future')
+                    <a href="/{{$adventure -> id}}" class="list-group-item list-group-item-action flex-column align-items-start active">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1"> {{$adventure -> title}} </h5>
+                            <small> created at: {{ $adventure -> created_at  }}</small>
+                        </div>
+                    </a>
+                @endif
+            @endforeach
+
         </div>
+
     </div>
 </div>
 
-<h1>{{ $user }}</h1>
-<h1>{{ $adventures }}</h1>
 
 <form id="logout-form" action="{{ route('logout') }}" method="POST">{{ csrf_field() }}
     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>

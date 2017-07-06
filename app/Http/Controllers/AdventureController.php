@@ -58,15 +58,26 @@ class AdventureController extends Controller
         return redirect('/');
     }
 
+
     /**
      * Display the specified resource.
      *
      * @param  \App\Adventure  $adventures
      * @return \Illuminate\Http\Response
      */
-    public function show(Adventure $adventures)
+    public function show($id, Request $request)
     {
-        //
+
+        $data = [
+            'adventure' => Adventure::where([
+                ['id', $id],
+                ['user_id', $request -> user() -> id]
+            ]) -> get(),
+            'user' => $request -> user()
+        ];
+        //return $id;
+        return view('adventure.index');
+
     }
 
     /**
@@ -77,7 +88,7 @@ class AdventureController extends Controller
      */
     public function edit(Adventure $adventures)
     {
-        //
+
     }
 
     /**
