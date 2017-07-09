@@ -63,6 +63,9 @@
     </div>
 </div>
 
+<form id="create-form" action="{{ route('create') }}" method="GET">{{ csrf_field() }}
+    <a href="{{ route('create') }}" onclick="event.preventDefault(); document.getElementById('create-form').submit();">Create</a>
+</form>
 
 <form id="logout-form" action="{{ route('logout') }}" method="POST">{{ csrf_field() }}
     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>

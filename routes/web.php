@@ -13,10 +13,12 @@
 use Illuminate\Http\Request;
 
 
+Auth::routes();
+
 Route::resource('/', 'AdventureController');
 
 Route::get('/{id}', 'AdventureController@show');
 
-Auth::routes();
+Route::resource('/picture', 'PictureController');
 
 //Route::get('/home', 'HomeController@index')->name('home');

@@ -76,7 +76,7 @@ class AdventureController extends Controller
             'user' => $request -> user()
         ];
         //return $id;
-        return view('adventure.index');
+        return view('adventure.index', compact('id'));
 
     }
 

@@ -24,7 +24,8 @@ class PictureController extends Controller
      */
     public function create()
     {
-        //
+
+        return view ('Picture.create');
     }
 
     /**
@@ -35,7 +36,27 @@ class PictureController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
+
+        //$this -> validate($request, [
+        //    'title' => 'required',
+        //    'image' => 'image|max:1999'
+        //]);
+        //// Get filename with extension
+        //$filenameWithExt = $request -> file ('image') -> getClientOriginalImage();
+        //// Get filename by splitting
+        //$filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+        //// Get extension
+        //$extension = $request -> file('image') -> getOriginalClientExtension();
+//
+        //$fileNameToStore = $filename."_".time().'.'.$extension;
+//
+        //$path = $request -> file('image') -> storeAs('public/images', $fileNameToStore);
+//
+        //$image = new Picture;
+        //$image -> title = $request ->input('title');
+        //$image -> adventure_id = $id;
+
     }
 
     /**
