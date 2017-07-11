@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Picture;
 use App\Adventure;
 use Illuminate\Http\Request;
 
@@ -73,10 +74,14 @@ class AdventureController extends Controller
                 ['id', $id],
                 ['user_id', $request -> user() -> id]
             ]) -> get(),
-            'user' => $request -> user()
+            'user' => $request -> user(),
+            'picture' => Picture::where([
+                ['adventure_id', $id]
+            ]) -> get()
         ];
-        //return $id;
-        return view('adventure.index', compact('id'));
+
+        return ($data);
+        //return view('adventure.index', compact('id'));
 
     }
 

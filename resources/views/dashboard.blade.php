@@ -12,6 +12,41 @@
 
 <body>
 
+<nav class="navbar fixed navbar-toggleable-md navbar-light bg-faded">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">UpWeGo</a>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ route('create') }}">Create <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+            </li>
+        </ul>
+
+        <form class="form-inline my-2 my-lg-0 mr-auto">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
+        <ul class="navbar-nav ">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ $user  -> name}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST">{{ csrf_field() }}
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                    </form>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
 <div class="container">
     <div class="row">
 
@@ -63,13 +98,7 @@
     </div>
 </div>
 
-<form id="create-form" action="{{ route('create') }}" method="GET">{{ csrf_field() }}
-    <a href="{{ route('create') }}" onclick="event.preventDefault(); document.getElementById('create-form').submit();">Create</a>
-</form>
 
-<form id="logout-form" action="{{ route('logout') }}" method="POST">{{ csrf_field() }}
-    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-</form>
 
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
         integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"

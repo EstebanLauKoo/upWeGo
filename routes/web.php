@@ -19,6 +19,8 @@ Route::resource('/', 'AdventureController');
 
 Route::get('/{id}', 'AdventureController@show');
 
+Route::post('/picture/{id}', 'PictureController@store');
+
 Route::resource('/picture', 'PictureController');
 
 //Route::get('/home', 'HomeController@index')->name('home');

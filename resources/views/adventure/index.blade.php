@@ -46,10 +46,49 @@
 
 <section class="jumbotron text-center">
     <div class="container">
-        <h1 class="jumbotron-heading">Album example</h1>
+        <h1 class="jumbotron-heading">{{$id}}</h1>
         <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
         <p>
-            <a href="{{ route('picture.create', ['adventureId' => $id]) }}" class="btn btn-primary">Add a picture</a>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {!! Form::open (array ('url'  => array('/picture', $id ) ,
+                                           'method' => 'POST',
+                                           'enctype' => "multipart/form-data"
+                    )) !!}
+
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            {{Form::label('title', 'Title')}}
+                            {{Form::text('title', '', ['class' => 'form-control', 'placeholder' => 'Title'])}}
+                        </div>
+
+                        <div class="form-group">
+                            {{Form::file('image')}}
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                        {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
+
+                    </div>
+
+                    {!! Form::close() !!}
+                </div>
+            </div>
+        </div>
         </p>
     </div>
 </section>
