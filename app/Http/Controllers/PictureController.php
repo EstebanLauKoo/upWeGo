@@ -36,7 +36,6 @@ class PictureController extends Controller
      */
     public function store(Request $request, $id)
     {
-
         $this -> validate($request, [
             'title' => 'required',
             'image' => 'image|max:1999'

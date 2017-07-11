@@ -69,19 +69,17 @@ class AdventureController extends Controller
     public function show($id, Request $request)
     {
 
-        $data = [
-            'adventure' => Adventure::where([
-                ['id', $id],
-                ['user_id', $request -> user() -> id]
-            ]) -> get(),
-            'user' => $request -> user(),
-            'picture' => Picture::where([
-                ['adventure_id', $id]
-            ]) -> get()
-        ];
 
-        return ($data);
-        //return view('adventure.index', compact('id'));
+        $adventure = Adventure::where([
+            ['id', $id],
+            ['user_id', $request -> user() -> id]
+        ]) -> get();
+        $user = $request -> user();
+        $picture = Picture::where([
+            ['adventure_id', $id]
+        ]) -> get();
+
+        return view('adventure.index', compact('adventure','user', 'picture', 'id'));
 
     }
 
