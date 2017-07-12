@@ -51,11 +51,26 @@ class PictureController extends Controller
 
         $path = $request -> file('image') -> storeAs('public/images', $fileNameToStore);
 
-        $picture = new Picture;
-        $picture -> title = $request ->input('title');
-        $picture -> adventure_id = $id;
-        $picture -> image = $fileNameToStore;
-        $picture -> save();
+
+        if ($request -> comment === null) {
+
+            $picture = new Picture;
+            $picture -> title = $request ->input('title');
+            $picture -> adventure_id = $id;
+            $picture -> image = $fileNameToStore;
+            $picture -> save();
+        }
+
+        else {
+
+            $picture = new Picture;
+            $picture -> title = $request ->input('title');
+            $picture -> adventure_id = $id;
+            $picture -> comment = $request -> comment;
+            $picture -> image = $fileNameToStore;
+            $picture -> save();
+
+        }
 
         return redirect("/$id");
 

@@ -47,12 +47,10 @@ class AdventureController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'status' => 'required'
         ]);
 
         $adventure = new Adventure;
         $adventure -> title = $request->input('title');
-        $adventure -> status = $request->input('status');
         $adventure -> user_id = $request->user()->id;
         $adventure -> save();
 
@@ -73,7 +71,7 @@ class AdventureController extends Controller
         $adventure = Adventure::where([
             ['id', $id],
             ['user_id', $request -> user() -> id]
-        ]) -> get();
+        ]) -> first();
         $user = $request -> user();
         $picture = Picture::where([
             ['adventure_id', $id]
