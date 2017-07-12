@@ -17,6 +17,7 @@ class CreatePicturesTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('image');
+            $table->text('comment');
             $table->timestamps();
             $table->integer('adventure_id')->unsigned();
             $table->foreign('adventure_id')->references('id')->on('adventures');

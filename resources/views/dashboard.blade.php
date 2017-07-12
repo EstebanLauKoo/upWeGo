@@ -53,44 +53,14 @@
         <div class="list-group col-sm-4">
 
             @foreach( $adventures as $adventure)
-                @if ( $adventure -> status === 'past')
-            <a href="/{{$adventure -> id}}" class="list-group-item list-group-item-action flex-column align-items-start active">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1"> {{$adventure -> title}} </h5>
-                    <small> created at: {{ $adventure -> created_at  }}</small>
-                </div>
-            </a>
-                @endif
-                @endforeach
 
-        </div>
-
-        <div class="list-group col-sm-4">
-
-            @foreach( $adventures as $adventure)
-                @if ( $adventure -> status === 'present')
                     <a href="/{{$adventure -> id}}" class="list-group-item list-group-item-action flex-column align-items-start active">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1"> {{$adventure -> title}} </h5>
                             <small> created at: {{ $adventure -> created_at  }}</small>
                         </div>
                     </a>
-                @endif
-            @endforeach
 
-        </div>
-
-        <div class="list-group col-sm-4">
-
-            @foreach( $adventures as $adventure)
-                @if ( $adventure -> status === 'future')
-                    <a href="/{{$adventure -> id}}" class="list-group-item list-group-item-action flex-column align-items-start active">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1"> {{$adventure -> title}} </h5>
-                            <small> created at: {{ $adventure -> created_at  }}</small>
-                        </div>
-                    </a>
-                @endif
             @endforeach
 
         </div>
