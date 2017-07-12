@@ -14,11 +14,6 @@
                 {{Form::label('title', 'Title')}}
                 {{Form::text('title', '', ['class' => 'form-control', 'placeholder' => 'Title'])}}
             </div>
-            <div class="form-group">
-                {{Form::label('status', 'Status')}}
-                {{Form::select('status', ['past' => 'past', 'present' => 'present', 'future' => 'future'], null, ['placeholder' => 'Whats the status?'])}}
-            </div>
-
             {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
 
         {!! Form::close() !!}

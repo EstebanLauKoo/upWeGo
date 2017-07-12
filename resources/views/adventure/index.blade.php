@@ -46,10 +46,10 @@
 
 <section class="jumbotron text-center">
     <div class="container">
-        <h1 class="jumbotron-heading">{{$id}}</h1>
+        <h1 class="jumbotron-heading">{{$adventure -> title }}</h1>
         <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
         <p>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Add a Picture</button>
 
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -74,6 +74,10 @@
 
                         <div class="form-group">
                             {{Form::file('image')}}
+                        </div>
+
+                        <div class="form-group">
+                            {{ Form::textarea('comment', null, ['placeholder' => 'add your comment']) }}
                         </div>
 
                     </div>
