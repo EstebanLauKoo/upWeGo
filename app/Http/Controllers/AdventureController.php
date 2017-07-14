@@ -22,7 +22,7 @@ class AdventureController extends Controller
             return view('dashboard', compact('user', 'adventures'));
         }
         else
-            return view('welcome');
+            return view('welcome2');
 
     }
 
